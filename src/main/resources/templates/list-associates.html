@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <title>Skill tracker</title>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h3>Skill tracker</h3>
+    <hr>
+
+    <!-- Add a button -->
+    <a th:href="@{/associates/showFormForAdd}"
+       class="btn btn-primary btn-sm mb-3">
+        Add Associate
+    </a>
+    <form th:action ="@{/associates/list}" method="get">
+        <input id="txtSearch" type="text" name="keyword">
+        <button type ="submit">Search</button>
+    </form>
+    <hr>
+    <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+        <tr>
+            <th>Associate ID</th>
+            <th>Associate Name</th>
+            <th>Associate Email</th>
+            <th>Mobile Number</th>
+            <th>Skills</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="tempAssociate : ${associates}">
+
+            <td th:text="${tempAssociate.associateId}" />
+            <td th:text="${tempAssociate.name}" />
+            <td th:text="${tempAssociate.email}" />
+            <td th:text="${tempAssociate.mobileNumber}" />
+            <td th:text="${tempAssociate.skills}" />
+
+            <!-- Add update button/link -->
+            <td>
+                <a th:href="@{/associates/showFormForUpdate(associateId=${tempAssociate.associateId})}"
+                   class="btn btn-info btn-sm">
+                    Update
+                </a>
+                <a th:href="@{/associates/delete(associateId=${tempAssociate.associateId})}"
+                   class="btn btn-danger btn-sm">
+                    Delete
+                </a>
+            </td>
+
+
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+
+</body>
+</html>
+
+
+
+
