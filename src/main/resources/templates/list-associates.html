@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:skill>
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -14,7 +14,7 @@
 
 <div class="container">
 
-    <h3>Skill tracker</h3>
+    <h2>Skill tracker</h2>
     <hr>
 
     <!-- Add a button -->
@@ -48,12 +48,18 @@
             <td th:text="${tempAssociate.mobileNumber}" />
             <td th:text="${tempAssociate.skills}" />
 
+
+
             <!-- Add update button/link -->
             <td>
+                <a th:href="@{/associates/view/{id}(id=${tempAssociate.associateId})}"
+                   class="btn btn-primary btn-sm">View</a>
+                <br>
                 <a th:href="@{/associates/showFormForUpdate(associateId=${tempAssociate.associateId})}"
                    class="btn btn-info btn-sm">
                     Update
                 </a>
+<br>
                 <a th:href="@{/associates/delete(associateId=${tempAssociate.associateId})}"
                    class="btn btn-danger btn-sm">
                     Delete

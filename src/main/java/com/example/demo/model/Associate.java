@@ -16,9 +16,10 @@ public class Associate {
     @Column(name = "mobile_number")
     private String mobileNumber;
 
-    @ManyToMany
-    @Column(name="skill")
+   @ManyToMany
+    @Column(name="skills")
     private List<Skill> skills;
+
     public Associate() {
         super();
     }
@@ -70,7 +71,7 @@ public class Associate {
     public void setSkills(List<Skill> skills) {
         this.skills = skills;
     }
-    public boolean hasSkill(Skill skill) {
+   public boolean hasSkill(Skill skill) {
         for (Skill containedSkill: getSkills()) {
             if (containedSkill.getSkillId() == skill.getSkillId()) {
                 return true;

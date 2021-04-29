@@ -38,7 +38,15 @@
         <input type="text" th:field="*{skills}"
                class="form-control mb-4 col-4" placeholder="Associates Skill">
 
-
+        <span th:each="skill : ${associates.skills}">
+			<br/>&nbsp;&nbsp;<span th:text="${skill.skill_title}" />
+		</span>
+        <form th:action="@{/associate/{id}/skills(id=${associates.associateId})}" method="post" enctype="multipart/form-data" >
+            <select name="skillId">
+                <option th:each="skill : ${skills}">Skill</option>
+            </select>
+            <input type="submit" value="Add skill"/>
+        </form>
         <button type="submit" class="btn btn-info col-2">Save</button>
 
     </form>

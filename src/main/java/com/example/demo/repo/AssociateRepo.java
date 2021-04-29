@@ -10,6 +10,6 @@ import java.util.List;
 
 @Repository
 public interface AssociateRepo extends JpaRepository<Associate, Integer> {
-    @Query(value="select * from ASSOCIATE_DETAIL a where a.name like %:keyword% or e.email like %:keyword% or e.skill like %:keyword% e.mobile_number like %:keyword%", nativeQuery = true)
+    @Query(value="select * from ASSOCIATE_DETAIL e where e.name like %:keyword% or e.email like %:keyword% or e.mobile_number like %:keyword%", nativeQuery = true)
     List<Associate> findByKeyword(@Param("keyword") String keyword);
 }
